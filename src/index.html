@@ -3,15 +3,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/main.scss" />
-    <title>Hello, World!</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <title>HangMan Game</title>
   </head>
   <body>
-    <h1>Hello, World!</h1>
-    <ul>
-      <li>home</li>
-      <li>About</li>
-      <li>Contact</li>
+<div class="container">
+  <div class="hangman-box">
+    <img src="./images/hangman-0.svg" alt="hangman Image">
+    <h1>HangMan Game</h1>
+  </div>
+  <div class="game-box">
+    <ul class="word-display">
+      <li class="letter"></li>
+      <li class="letter"></li>
+      <li class="letter"></li>
+      <li class="letter"></li>
+      <li class="letter"></li>
+      <li class="letter"></li>
+      <li class="letter"></li>
     </ul>
+    <h4 class="hint-text">
+      <b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur enim reprehenderit nostrum molestiae quo cumque esse. Consequuntur illo minus, dolores explicabo corporis ratione in laborum facilis alias unde aperiam quis.</b>
+    </h4>
+    <h4 class="gueses text">
+      Incorrect Guesses:
+      <b>0 / 6</b>
+    </h4>
+    <div class="keyboard">
+      <button>a</button>  <button>b</button>  <button>c</button>  <button>d</button>  <button>e</button>  <button>f</button>  <button>g</button>  <button>h</button>  <button>i</button>  <button>j</button>  <button>k</button>  <button>l</button>  <button>m</button>  <button>n</button>  <button>o</button>  <button>p</button>  <button>q</button>  <button>r</button>  <button>s</button>  <button>t</button>  <button>u</button>  <button>v</button>  <button>w</button>  <button>x</button>  <button>y</button>  <button>z</button>
+    </div>
+  </div>
+</div>
   </body>
 </html>
