@@ -1,0 +1,27 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "This is a boilerplate",
+  "scripts": {
+    "start": "run-p watch watch:styles",
+    "build": "run-s clean clean:styles build:styles copy",
+    "deploy": "run-s build publish",
+    "build:styles": "sass src/scss:src/styles",
+    "watch": "live-server src",
+    "watch:styles": "sass src/scss:src/styles --watch",
+    "clean": "rm -rf dist",
+    "clean:styles": "rm -rf src/styles",
+    "copy": "mkdir dist && rsync -avr --exclude=\"/scss\" src/ dist",
+    "publish": "gh-pages -d dist"
+  },
+  "author": "dci",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "gh-pages": "^4.0.0",
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.0"
+  }
+}

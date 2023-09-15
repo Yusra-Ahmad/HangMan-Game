@@ -1,0 +1,20 @@
+// @import "base";
+// You need the base only when you are not using bootstrap. In that case, go to _base.scss
+// to customize it as you may want.
+
+@import "variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Write your sass code here or import partials
+
+h1 {
+  color: rebeccapurple;
+}
+
+ul {
+  li {
+    list-style-type: none;
+    margin-bottom: $spacer;
+    color: $orange;
+  }
+}
