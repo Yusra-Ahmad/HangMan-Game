@@ -6,46 +6,185 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 @import "./base";
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Cookie&family=Fredericka+the+Great&family=Kalam:wght@300;400&family=Kaushan+Script&family=Love+Ya+Like+A+Sister&family=Maven+Pro:wght@400;500;600;800;900&family=Merienda:wght@300;400;500;600&family=Miniver&family=Niconne&family=Rubik+Moonrocks&display=swap');
-
-body{
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Cabin+Sketch:wght@400;700&family=Cookie&family=Fredericka+the+Great&family=Kalam:wght@300;400&family=Kaushan+Script&family=Love+Ya+Like+A+Sister&family=Maven+Pro:wght@400;500;600;800;900&family=Merienda:wght@300;400;500;600&family=Miniver&family=Niconne&family=Rubik+Moonrocks&display=swap');
+body {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #adb1f5c5;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(238,169,55,1) 93%, rgba(253,187,45,1) 100%);
+  color: snow;
+  font-family: "Fredericka the Great";
 }
 .container {
-  width: 60vw;
-  height: 60vh;
-  background-color: rgba(236, 236, 227, 0.943);
+  width: 80vw;
+  // height: 70vh;
+  background-image: url(../images/greenboard.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 10px solid rgb(102, 42, 10);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  padding: 2rem;
+  padding: 5rem;
   border-radius: 20px;
-  .hangman-box{
-    img{
-
+  .hangman-box {
+  
+    img {
       width: 20vw;
+      
     }
-    h1{
-      font-family : "Bangers" ;
+    h1 {
+    font-size: clamp(1.6rem, 3vw, 3rem);
       text-align: center;
-      color: rgb(56, 5, 197);
+    text-transform: uppercase;
+      text-shadow: 5px 5px  rgb(111, 40, 2) ;
     }
   }
   .game-box {
-    .word-display{
+    h4 {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 400;
+      p{
+        font-family: "Cabin Sketch";
+      }
+    }
+    .guesses-text {
+      b {
+        color: rgb(246, 138, 6);
+        font-family: "Cabin Sketch";
+      }
+    }
+    .word-display {
       display: flex;
-      gap: 10px ;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       list-style: none;
-
-      .letter{
-        width: 4rem;
-        margin-bottom: 2rem;
-        border-bottom: 3px solid black;
+margin: 2rem;
+      .letter {
+        width: clamp(2.6rem, 3vw, 4rem);
+        font-size:clamp(2.6rem, 3vw, 4rem);
+        text-transform: uppercase;
+        text-align: center;
+        border-bottom: 2px dotted snow;
+      }
+      .guessed {
+        border: none;
+        margin-top: -1rem;
+      }
+    }
+    .keyboard {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: center;    
+        button{
+        width: calc(100% /  8 - 5px);
+        height: 100%;
+        border: 2px solid rgb(102, 42, 10);
+        border-radius: 9px;
+        background: rgba(107, 62, 37, 0.533);
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  font-family: "Cabin Sketch";
+  text-transform: uppercase;
+  color: snow;
+      }
+      button[disabled] {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+      button:hover{
+        cursor: pointer;
+        background-color: rgba(66, 66, 66, 0.602);
       }
     }
   }
 }
+
+
+.game-modal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+transition: opacity 0.4s ease;
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(238,169,55,1) 93%, rgba(253,187,45,1) 100%);
+  width: 30rem;
+  height: 35%;
+  text-align: center;
+  border-radius: 20px;
+    img{
+      width: 130px;
+    }
+button{
+  border: 2px solid rgb(102, 42, 10);
+  border-radius: 9px;
+  background: rgba(107, 62, 37, 0.533);
+font-size: 1.6rem;
+font-family: "Cabin Sketch";
+color: snow;
+padding: 0.5rem;
+}
+button:hover{
+  cursor: pointer;
+  background-color: rgba(66, 66, 66, 0.602);
+}
+  }
+}
+.game-modal.show{
+  opacity: 1;
+  pointer-events: auto;
+  
+}
+@media (max-width: 1060px){
+  .container{
+    height: 90%;
+    flex-direction: column;
+    padding: 30px 15px;
+align-items: center;
+justify-content: space-around;
+.hangman-box {
+  img{
+    width: 35vw;
+    height: 100%;
+  }
+  
+}
+  }
+}
+@media (max-width: 745px){
+.container{
+  width: 100%;
+  justify-content: center;
+  .hangman-box {
+    img{
+      width: 45vw;
+      height: 100%;
+    }
+    
+  }
+}
+
+}
+
+
+

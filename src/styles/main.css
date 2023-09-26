@@ -5,7 +5,7 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Cookie&family=Fredericka+the+Great&family=Kalam:wght@300;400&family=Kaushan+Script&family=Love+Ya+Like+A+Sister&family=Maven+Pro:wght@400;500;600;800;900&family=Merienda:wght@300;400;500;600&family=Miniver&family=Niconne&family=Rubik+Moonrocks&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Cabin+Sketch:wght@400;700&family=Cookie&family=Fredericka+the+Great&family=Kalam:wght@300;400&family=Kaushan+Script&family=Love+Ya+Like+A+Sister&family=Maven+Pro:wght@400;500;600;800;900&family=Merienda:wght@300;400;500;600&family=Miniver&family=Niconne&family=Rubik+Moonrocks&display=swap");
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -10770,36 +10770,162 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: rgba(173, 177, 245, 0.7725490196);
+  background: rgb(34, 193, 195);
+  background: linear-gradient(0deg, rgb(34, 193, 195) 0%, rgb(238, 169, 55) 93%, rgb(253, 187, 45) 100%);
+  color: snow;
+  font-family: "Fredericka the Great";
 }
 
 .container {
-  width: 60vw;
-  height: 60vh;
-  background-color: rgba(236, 236, 227, 0.943);
+  width: 80vw;
+  background-image: url(../images/greenboard.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 10px solid rgb(102, 42, 10);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  padding: 2rem;
+  padding: 5rem;
   border-radius: 20px;
 }
 .container .hangman-box img {
   width: 20vw;
 }
 .container .hangman-box h1, .container .hangman-box .h1 {
-  font-family: "Bangers";
+  font-size: clamp(1.6rem, 3vw, 3rem);
   text-align: center;
-  color: rgb(56, 5, 197);
+  text-transform: uppercase;
+  text-shadow: 5px 5px rgb(111, 40, 2);
+}
+.container .game-box h4, .container .game-box .h4 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.container .game-box h4 p, .container .game-box .h4 p {
+  font-family: "Cabin Sketch";
+}
+.container .game-box .guesses-text b {
+  color: rgb(246, 138, 6);
+  font-family: "Cabin Sketch";
 }
 .container .game-box .word-display {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
   list-style: none;
+  margin: 2rem;
 }
 .container .game-box .word-display .letter {
-  width: 4rem;
-  margin-bottom: 2rem;
-  border-bottom: 3px solid black;
+  width: clamp(2.6rem, 3vw, 4rem);
+  font-size: clamp(2.6rem, 3vw, 4rem);
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 2px dotted snow;
+}
+.container .game-box .word-display .guessed {
+  border: none;
+  margin-top: -1rem;
+}
+.container .game-box .keyboard {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.container .game-box .keyboard button {
+  width: calc(12.5% - 5px);
+  height: 100%;
+  border: 2px solid rgb(102, 42, 10);
+  border-radius: 9px;
+  background: rgba(107, 62, 37, 0.533);
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  font-family: "Cabin Sketch";
+  text-transform: uppercase;
+  color: snow;
+}
+.container .game-box .keyboard button[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.container .game-box .keyboard button:hover {
+  cursor: pointer;
+  background-color: rgba(66, 66, 66, 0.602);
+}
+
+.game-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.4s ease;
+}
+.game-modal .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(0deg, rgb(34, 193, 195) 0%, rgb(238, 169, 55) 93%, rgb(253, 187, 45) 100%);
+  width: 30rem;
+  height: 35%;
+  text-align: center;
+  border-radius: 20px;
+}
+.game-modal .content img {
+  width: 130px;
+}
+.game-modal .content button {
+  border: 2px solid rgb(102, 42, 10);
+  border-radius: 9px;
+  background: rgba(107, 62, 37, 0.533);
+  font-size: 1.6rem;
+  font-family: "Cabin Sketch";
+  color: snow;
+  padding: 0.5rem;
+}
+.game-modal .content button:hover {
+  cursor: pointer;
+  background-color: rgba(66, 66, 66, 0.602);
+}
+
+.game-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 1060px) {
+  .container {
+    height: 90%;
+    flex-direction: column;
+    padding: 30px 15px;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .container .hangman-box img {
+    width: 35vw;
+    height: 100%;
+  }
+}
+@media (max-width: 745px) {
+  .container {
+    width: 100%;
+    justify-content: center;
+  }
+  .container .hangman-box img {
+    width: 45vw;
+    height: 100%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
