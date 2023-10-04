@@ -1,7 +1,7 @@
 # HangMan-Game
 >
  
-![preview](web-portfolio-preview.jpeg)
+![preview](HANGMAN.jpeg)
 
 ⬇️ link below and visit  **HANGMAN GAME** 🖥️
 
