@@ -40,7 +40,7 @@ gameModal.classList.add("show")
     },    300 );
 }
 
-const initGame = (button, clickedLetter) => {
+const checkLetter = (button, clickedLetter) => {
 
     // Checking if the clicked letter is exists
  if(currentWord.includes(clickedLetter)){
@@ -69,11 +69,32 @@ const initGame = (button, clickedLetter) => {
 }
 
 //  creating keyboard buttons and adding event listeners
-for (let  i = 97;  i < 122; i++) {
+for (let  i = 97;  i < 123; i++) {
 const button = document.createElement("button");
 button.innerText = String.fromCharCode(i);
    keyboardDiv.appendChild(button); 
-   button.addEventListener("click", e => initGame(e.target, String.fromCharCode(i)) )
+   button.addEventListener("click", e => checkLetter(e.target, String.fromCharCode(i)) )
+}
+
+document.body.addEventListener("keyup", checkKey, false)
+
+function checkKey(event) {
+    // console.log("event:", event);
+    const key = event.key
+    const button = findButton(key)
+    checkLetter(button, key)
+}
+
+function findButton(innerText) {
+    const buttons = Array.from(document.querySelectorAll(".keyboard button"))
+
+    // console.log("buttons:", buttons);
+    const button = buttons.find( button => (
+        button.innerHTML === innerText
+    ))
+
+    // console.log("button:", button);
+    return button
 }
 
 getRandomWord();
